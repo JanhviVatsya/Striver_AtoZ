@@ -1,0 +1,34 @@
+Tabulation method:
+int rob(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> dp(n);
+        dp[0]=nums[0];
+        for(int i=1; i<n; i++){
+            int pick= nums[i];
+            if(i>1){
+                pick+=dp[i-2];
+            }
+            int notpick= dp[i-1];
+
+            dp[i]=max(pick, notpick);
+        }
+        return dp[n-1];
+    }
+
+Space Optimization:
+int rob(vector<int>& nums) {
+        int n=nums.size();
+        if(n==1) return nums[0];
+        int prev= max(nums[1], nums[0]), prev2=nums[0];
+        int sol=prev;
+        for(int i=2; i<n ; i++){
+            int pick= nums[i];
+            if(i>1) pick+=prev2;
+            int notpick= prev;
+            int cur=max(pick, notpick);
+            sol=max(sol,cur);
+            prev2=prev;
+            prev=cur;
+        }
+        return sol;
+}
