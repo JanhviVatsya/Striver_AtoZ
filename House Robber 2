@@ -1,0 +1,35 @@
+int t[101];
+    int solve(vector<int>& nums, int s, int e){
+
+        
+        if(s > e)
+            return 0;
+        if(t[s] != -1) return t[s];
+
+        int op1 = nums[s] + solve(nums, s + 2, e);
+
+        int op2 = 0 + solve(nums, s + 1, e);
+
+        int finalAns = max(op1, op2);
+
+        return t[s] = finalAns;
+    }
+    
+    int rob(vector<int>& nums) {
+
+        int n = nums.size();
+        memset(t, -1, sizeof(t));
+        if(n == 1){
+            return nums[0];
+        }
+        if(n == 2){
+            return max(nums[0], nums[1]);
+        }
+        int option1 = solve(nums, 0, n - 2);
+        memset(t, -1, sizeof(t)); 
+        int option2 = solve(nums, 1, n - 1); 
+
+        int maxi = max(option1, option2);
+        return maxi;
+        
+    }
