@@ -1,0 +1,11 @@
+bool check(vector<int>& nums) {
+        int down=0;
+        for(int i=0; i<nums.size()-1; i++){
+            if(nums[i]>nums[i+1]){
+                down++;
+            }
+        }
+        if(nums[nums.size()-1]>nums[0]) down++; //important point that i keep forgetting
+        if(down<=1) return true;
+        else return false;
+    }
