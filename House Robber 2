@@ -1,35 +1,23 @@
-int t[101];
-    int solve(vector<int>& nums, int s, int e){
-
-        
-        if(s > e)
-            return 0;
-        if(t[s] != -1) return t[s];
-
-        int op1 = nums[s] + solve(nums, s + 2, e);
-
-        int op2 = 0 + solve(nums, s + 1, e);
-
-        int finalAns = max(op1, op2);
-
-        return t[s] = finalAns;
+int houserobber1(vector<int>nums){
+    if(nums.size()==1) return nums[0];
+    int n=nums.size();
+    int prev=max(nums[1], nums[0]), prev2=nums[0];
+    for(int i=2; i<n; i++){
+        int pick=nums[i]+prev2;
+        int notpick= prev;
+        prev2=prev;
+        prev=max(pick, notpick);
     }
-    
+    return prev;
+}
+
     int rob(vector<int>& nums) {
-
-        int n = nums.size();
-        memset(t, -1, sizeof(t));
-        if(n == 1){
-            return nums[0];
+        if(nums.size()==1) return nums[0];
+        int n=nums.size();
+        vector<int> temp1, temp2;
+        for(int i=0; i<n; i++){
+            if(i!=0) temp1.push_back(nums[i]);
+            if(i!=n-1) temp2.push_back(nums[i]);
         }
-        if(n == 2){
-            return max(nums[0], nums[1]);
-        }
-        int option1 = solve(nums, 0, n - 2);
-        memset(t, -1, sizeof(t)); 
-        int option2 = solve(nums, 1, n - 1); 
-
-        int maxi = max(option1, option2);
-        return maxi;
-        
+        return max(houserobber1(temp1), houserobber1(temp2));
     }
