@@ -1,3 +1,10 @@
+Hint: Dono first aur last element ek sath to include nhi kr skte solution mein, ek hi krenge dono mein se,
+To 2 arrays bna lenge ek temp1 aur temp2
+temp1 --> first element ko chhodke sare elements daal denge
+temp2--> last element ko chhodke saare elements daal denge
+iske baad house robber1 jaisa hi hai solution...
+
+
 int houserobber1(vector<int>nums){
     if(nums.size()==1) return nums[0];
     int n=nums.size();
