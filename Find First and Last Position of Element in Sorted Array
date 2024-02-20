@@ -1,4 +1,4 @@
-yahan pe hum 
+is question mein yahan pe hum 
 else if(nums[mid]==target){
             if(nums[mid-1]!=target){
                 ans=mid;
