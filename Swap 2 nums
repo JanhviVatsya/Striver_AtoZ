@@ -1,0 +1,14 @@
+Using Bit Manipulation
+a=a^b;
+b=a^b;
+a=a^b;
+
+Using temp
+temp=a;
+a=b;
+b=temp;
+
+Using +,-
+x=x+y;
+y=x-y;
+x=x-y;
