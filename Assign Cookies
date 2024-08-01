@@ -1,0 +1,18 @@
+//Greedy Algorithm
+//the idea is to sort both cookie sizes and greedy kids array and to check if the kids can be satisfied
+//the sorting ensures that the less greedy kids get the cookies atleast and bigger cookies are saved for more greedy kids
+
+int findContentChildren(vector<int>& g, vector<int>& s) {
+        sort(g.begin(), g.end());
+        sort(s.begin(), s.end());
+        int gs= g.size();
+        int ss= s.size();
+        int gpointer=0, spointer=0;
+        while(gpointer<gs && spointer<ss){
+            if(g[gpointer]<=s[spointer]){
+                gpointer++;
+            }
+            spointer++;
+        }
+        return gpointer;
+    }
